@@ -1,26 +1,44 @@
 # ============================================================
 # Decap CMS 配置（可视化写作后台）
-# 登录/认证由 DecapBridge 提供。下面 identity_url、gateway_url 的值
-# 会在你注册 DecapBridge 并关联仓库后生成，我帮你替换占位符即可。
+# 认证由 DecapBridge 提供（PKCE 登录：Google / 微软 / 密码）。
+# 下面 backend 段来自 DecapBridge 生成的配置。
 # ============================================================
 
 backend:
   name: git-gateway
   repo: BeverlyShi/BeverlyShi.github.io
   branch: main
-  # ↓↓↓ DecapBridge 建站后会给你这两个值，替换下面的占位符 ↓↓↓
-  identity_url: https://auth.decapbridge.com/sites/YOUR_DECAPBRIDGE_SITE_ID
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/ea63f0c2-1366-4c65-80db-25e6d1e20de7/pkce
+  auth_token_endpoint: /sites/ea63f0c2-1366-4c65-80db-25e6d1e20de7/token
   gateway_url: https://gateway.decapbridge.com
 
-# 站点信息（DecapBridge 登录页会用到）
+  # 提交记录里显示是谁改的（可选）
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge'
+
+# PKCE 用户信息字段（DecapBridge 推荐）
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+# 站点信息
 site_url: https://beverlyshi.github.io
 display_url: https://beverlyshi.github.io
 logo_url: https://beverlyshi.github.io/assets/favicon.svg
 
-# 后台界面语言
+# 后台界面语言（中文）
 locale: zh_Hans
 
-# 图片上传位置：在编辑器里拖图会存到这里
+# 图片上传位置：编辑器里拖图会存到这里
 media_folder: assets/images/uploads
 public_folder: /assets/images/uploads
 
