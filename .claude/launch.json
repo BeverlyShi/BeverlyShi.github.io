@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-lc",
+        "export PATH=\"/opt/homebrew/opt/ruby/bin:$PATH\"; export GEM_HOME=/Users/shiboyang/blog/.gems; export PATH=\"$GEM_HOME/bin:$PATH\"; export JEKYLL_NO_BUNDLER_REQUIRE=true; cd /Users/shiboyang/blog; jekyll serve --host 127.0.0.1 --port 4000 2>&1"
+      ],
+      "port": 4000,
+      "autoPort": false
+    }
+  ]
+}

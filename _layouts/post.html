@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<div class="post-container">
+  <article class="post-article">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%-m月%-d日" }}</time>
+        {% if page.categories %}
+        <span class="post-category-badge">{{ page.categories | first }}</span>
+        {% endif %}
+        {% assign words = content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        <span class="post-reading-time">{{ minutes }} min read</span>
+      </div>
+    </header>
+    <div class="post-content">
+      {{ content }}
+    </div>
+    <footer class="post-footer">
+      {% if page.categories contains 'life' %}
+      <a href="{{ '/life' | relative_url }}" class="back-to-blog">&larr; 回到 Life</a>
+      {% elsif page.categories contains 'tech' %}
+      <a href="{{ '/blog' | relative_url }}" class="back-to-blog">&larr; 回到 Blog</a>
+      {% else %}
+      <a href="{{ '/' | relative_url }}" class="back-to-blog">&larr; 回到首页</a>
+      {% endif %}
+      <div class="post-nav">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="post-nav-prev">&larr; {{ page.previous.title }}</a>
+        {% endif %}
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="post-nav-next">{{ page.next.title }} &rarr;</a>
+        {% endif %}
+      </div>
+    </footer>
+  </article>
+</div>

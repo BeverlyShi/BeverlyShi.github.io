@@ -1,0 +1,43 @@
+title: Yiyue
+description: "个人博客 — 记录技术、想法与生活"
+url: "https://BeverlyShi.github.io"
+baseurl: ""
+
+author:
+  name: Yiyue
+  email: your-email@example.com
+  bio: "Vibe coding 爱好者 · 记录技术与生活"
+  avatar: /img/photo.svg
+
+social:
+  github: BeverlyShi
+  twitter: ""
+  scholar: ""
+  linkedin: ""
+
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

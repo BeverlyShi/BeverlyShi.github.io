@@ -1,0 +1,244 @@
+@import "variables";
+
+// Blog index
+.blog-container {
+  max-width: $max-content-width;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.blog-section {
+  margin-bottom: 2.5rem;
+}
+
+.blog-section-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid $color-bg-light;
+}
+
+.blog-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  padding: 0.3em 0.85em;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: $color-text-muted;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: none;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.active {
+    background: $color-primary;
+    color: white;
+    border-color: $color-primary;
+  }
+}
+
+.tag-badge {
+  display: inline-block;
+  background: $color-bg-light;
+  color: $color-text-muted;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.1em 0.5em;
+  border-radius: 4px;
+}
+
+.blog-post-card {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.blog-post-card-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+
+  a {
+    color: $color-text;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.blog-post-card-meta {
+  font-size: 0.85rem;
+  color: $color-text-muted;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.blog-post-card-excerpt {
+  font-size: 0.95rem;
+  color: $color-text-muted;
+  margin-bottom: 0;
+}
+
+// Post page
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}
+
+.post-category-badge {
+  display: inline-block;
+  background: $color-primary-light;
+  color: $color-primary;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+}
+
+.post-reading-time {
+  color: $color-text-muted;
+}
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  h2 {
+    margin-top: 2rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  img {
+    border-radius: 6px;
+    margin: 1.5em 0;
+  }
+
+  // Make wide tables scroll horizontally instead of overflowing the page.
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1.25em 0;
+  }
+
+  th,
+  td {
+    padding: 0.4em 0.65em;
+    border: 1px solid $color-border;
+    white-space: nowrap;
+  }
+
+  th {
+    background: $color-bg-light;
+    font-weight: 600;
+  }
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $color-border;
+}
+
+.back-to-blog {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.post-nav-prev,
+.post-nav-next {
+  font-size: 0.9rem;
+  color: $color-primary;
+}
+
+// Intro note on blog index pages
+.blog-intro-note {
+  font-size: 0.95rem;
+  color: $color-text-muted;
+  padding: 0.85rem 1.1rem;
+  background: $color-bg-light;
+  border-left: 3px solid $color-primary;
+  border-radius: 4px;
+  margin-bottom: 1.75rem;
+}
+
+// Language switcher for bilingual posts
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-end;
+}
+
+.lang-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35em 0.9em;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  background: none;
+  color: $color-text-muted;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.active {
+    background: $color-primary;
+    color: white;
+    border-color: $color-primary;
+  }
+}
+
+.lang-content {
+  &[lang="zh"] {
+    line-height: 1.9;
+  }
+}
