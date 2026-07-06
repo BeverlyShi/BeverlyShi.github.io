@@ -1,0 +1,77 @@
+# ============================================================
+# Decap CMS 配置（可视化写作后台）
+# 登录/认证由 DecapBridge 提供。下面 identity_url、gateway_url 的值
+# 会在你注册 DecapBridge 并关联仓库后生成，我帮你替换占位符即可。
+# ============================================================
+
+backend:
+  name: git-gateway
+  repo: BeverlyShi/BeverlyShi.github.io
+  branch: main
+  # ↓↓↓ DecapBridge 建站后会给你这两个值，替换下面的占位符 ↓↓↓
+  identity_url: https://auth.decapbridge.com/sites/YOUR_DECAPBRIDGE_SITE_ID
+  gateway_url: https://gateway.decapbridge.com
+
+# 站点信息（DecapBridge 登录页会用到）
+site_url: https://beverlyshi.github.io
+display_url: https://beverlyshi.github.io
+logo_url: https://beverlyshi.github.io/assets/favicon.svg
+
+# 后台界面语言
+locale: zh_Hans
+
+# 图片上传位置：在编辑器里拖图会存到这里
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+# 内容集合：你的“文章”
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    description: 在这里写博客文章，写完点右上角 Publish 就会发布。
+    folder: _posts
+    create: true
+    # 文件名自动带日期前缀，符合 Jekyll 要求
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - {
+          name: date,
+          label: 日期,
+          widget: datetime,
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+        }
+      - name: categories
+        label: "分类（tech = 进 Blog 页；life = 进 Life 页）"
+        widget: select
+        multiple: true
+        min: 1
+        max: 1
+        options: ["tech", "life"]
+        default: ["tech"]
+      - {
+          name: tags,
+          label: 标签（可选，回车分隔）,
+          widget: list,
+          required: false,
+        }
+      - {
+          name: excerpt,
+          label: 摘要（会显示在列表页，可选）,
+          widget: text,
+          required: false,
+        }
+      - {
+          name: math,
+          label: 需要数学公式？,
+          widget: boolean,
+          default: false,
+          required: false,
+        }
+      - { name: body, label: 正文, widget: markdown }
