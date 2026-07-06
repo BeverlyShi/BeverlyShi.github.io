@@ -1,7 +1,9 @@
 @import "variables";
 
+// Sticky-footer: page content grows to fill the viewport so the footer
+// sits at the bottom without leaving a gap below it.
 .page-content {
-  min-height: calc(100vh - #{$nav-height} - 80px);
+  flex: 1 0 auto;
 }
 
 .page-container,
@@ -25,4 +27,23 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid $color-bg-light;
+}
+
+.site-footer {
+  flex-shrink: 0;
+  border-top: 1px solid $color-border;
+  margin-top: 2rem;
+
+  .footer-container {
+    max-width: $max-page-width;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: $color-text-muted;
+    }
+  }
 }
