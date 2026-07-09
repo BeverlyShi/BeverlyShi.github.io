@@ -1,13 +1,18 @@
 ---
-title: "关于 vibe coding 的一些碎片想法"
+title: 关于 vibe coding 的一些碎片想法
 date: 2026-06-20
-categories: [tech]
-tags: [vibe-coding, 工具]
-excerpt: "vibe coding 不是不思考,而是把思考的层次抬高了 —— 一些实践中的体会。"
+categories:
+  - tech
+tags:
+  - vibe-coding
+  - 工具
+excerpt: vibe coding 不是不思考,而是把思考的层次抬高了 —— 一些实践中的体会。
 math: false
 ---
 
 最近一直在用 vibe coding 的方式做东西,攒了一些想法,先记在这里。
+
+1. 
 
 ## 它改变的是什么
 
@@ -24,7 +29,7 @@ math: false
 ## 一个小清单
 
 | 场景 | 我的做法 |
-|------|----------|
+| --- | --- |
 | 快速原型 | 大胆生成,先跑起来 |
 | 核心逻辑 | 逐行读,自己确认 |
 | 重构 | 小范围、可回滚 |
