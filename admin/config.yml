@@ -1,44 +1,20 @@
 # ============================================================
-# Decap CMS 配置（可视化写作后台）
-# 认证由 DecapBridge 提供（PKCE 登录：Google / 微软 / 密码）。
-# 下面 backend 段来自 DecapBridge 生成的配置。
+# Sveltia CMS 配置（可视化写作后台，支持剪贴板粘贴 / 拖拽图片）
+# 认证：GitHub 登录，经由 Cloudflare Worker（sveltia-cms-auth）中转。
 # ============================================================
 
 backend:
-  name: git-gateway
+  name: github
   repo: BeverlyShi/BeverlyShi.github.io
   branch: main
-  auth_type: pkce
-  base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/ea63f0c2-1366-4c65-80db-25e6d1e20de7/pkce
-  auth_token_endpoint: /sites/ea63f0c2-1366-4c65-80db-25e6d1e20de7/token
-  gateway_url: https://gateway.decapbridge.com
-
-  # 提交记录里显示是谁改的（可选）
-  commit_messages:
-    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
-    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
-    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
-    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
-    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
-    openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge'
-
-# PKCE 用户信息字段（DecapBridge 推荐）
-auth:
-  email_claim: email
-  first_name_claim: first_name
-  last_name_claim: last_name
-  avatar_url_claim: avatar_url
+  base_url: https://sveltia-cms-auth.m15730243593.workers.dev
 
 # 站点信息
 site_url: https://beverlyshi.github.io
 display_url: https://beverlyshi.github.io
 logo_url: https://beverlyshi.github.io/assets/favicon.svg
 
-# 后台界面语言（中文）
-locale: zh_Hans
-
-# 图片上传位置：编辑器里拖图会存到这里
+# 图片上传位置：编辑器里粘贴/拖拽的图片会存到这里
 media_folder: assets/images/uploads
 public_folder: /assets/images/uploads
 
@@ -47,7 +23,7 @@ collections:
   - name: posts
     label: 文章
     label_singular: 文章
-    description: 在这里写博客文章，写完点右上角 Publish 就会发布。
+    description: 在这里写博客文章，写完点右上角发布就会上线。
     folder: _posts
     create: true
     # 文件名自动带日期前缀，符合 Jekyll 要求
@@ -92,9 +68,4 @@ collections:
           default: false,
           required: false,
         }
-      - {
-          name: body,
-          label: 正文,
-          widget: richtext,
-          editor_components: ["image", "code-block"],
-        }
+      - { name: body, label: 正文, widget: markdown }
