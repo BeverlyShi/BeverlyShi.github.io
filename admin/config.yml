@@ -92,4 +92,9 @@ collections:
           default: false,
           required: false,
         }
-      - { name: body, label: 正文, widget: markdown }
+      - {
+          name: body,
+          label: 正文,
+          widget: richtext,
+          editor_components: ["image", "code-block"],
+        }
