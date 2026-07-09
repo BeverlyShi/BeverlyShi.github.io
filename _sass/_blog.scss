@@ -133,7 +133,9 @@
   line-height: 1.8;
 
   h2 {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+    padding-left: 0.7rem;
+    border-left: 4px solid $color-primary;
   }
 
   h3 {
@@ -141,8 +143,10 @@
   }
 
   img {
-    border-radius: 6px;
-    margin: 1.5em 0;
+    border-radius: 8px;
+    border: 1px solid $color-border;
+    margin: 1.25em 0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
   }
 
   // Make wide tables scroll horizontally instead of overflowing the page.
