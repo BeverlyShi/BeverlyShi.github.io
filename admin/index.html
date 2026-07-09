@@ -4,7 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light" />
     <title>写作后台 · Yiyue</title>
+    <!--
+      强制亮色：拦截“深色模式”媒体查询，让它始终按亮色返回。
+      必须在加载 CMS 脚本之前执行。只影响 prefers-color-scheme，
+      不影响宽度等其它媒体查询。
+    -->
+    <script>
+      (function () {
+        var orig = window.matchMedia ? window.matchMedia.bind(window) : null;
+        if (!orig) return;
+        window.matchMedia = function (query) {
+          if (typeof query === "string" && query.indexOf("prefers-color-scheme") !== -1) {
+            var wantsLight = query.indexOf("light") !== -1;
+            return {
+              matches: wantsLight, // 深色查询 → false；亮色查询 → true
+              media: query,
+              onchange: null,
+              addListener: function () {},
+              removeListener: function () {},
+              addEventListener: function () {},
+              removeEventListener: function () {},
+              dispatchEvent: function () { return false; },
+            };
+          }
+          return orig(query);
+        };
+      })();
+    </script>
   </head>
   <body>
     <!-- Sveltia CMS：可视化写作后台（支持剪贴板粘贴 / 拖拽图片） -->
