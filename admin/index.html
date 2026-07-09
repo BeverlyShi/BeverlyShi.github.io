@@ -36,6 +36,9 @@
   </head>
   <body>
     <!-- Sveltia CMS：可视化写作后台（支持剪贴板粘贴 / 拖拽图片） -->
-    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <!-- 版本固定在 0.170.x：table-editor.js 依赖其 DOM 结构，升级前先本地验证表格组件 -->
+    <script src="https://unpkg.com/@sveltia/cms@0.170.4/dist/sveltia-cms.js"></script>
+    <!-- 自定义表格组件：正文工具栏插入“表格”，可像 Word 一样直接点格子编辑 -->
+    <script src="./table-editor.js"></script>
   </body>
 </html>
