@@ -12,5 +12,10 @@ end
 # Windows / 部分环境需要
 gem "webrick", "~> 1.7"
 
+# Ruby 3.4+ 把这些从默认标准库移出，Jekyll 3.x 本地构建需要显式声明
+gem "csv"
+gem "base64"
+gem "bigdecimal"
+
 # 锁定较新的兼容依赖
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

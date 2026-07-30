@@ -69,3 +69,41 @@ collections:
           required: false,
         }
       - { name: body, label: 正文, widget: markdown }
+
+  - name: daily
+    label: 每日记录
+    label_singular: 每日记录
+    description: 记一下今天做了什么，会按时间线显示在 Daily 页。
+    folder: _daily
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{date}} {{title}}"
+    sortable_fields: [date]
+    fields:
+      - {
+          name: date,
+          label: 日期,
+          widget: datetime,
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+        }
+      - {
+          name: title,
+          label: 一句话总结（可选，会显示在日期旁边）,
+          widget: string,
+          required: false,
+        }
+      - name: body
+        label: 今天做了什么
+        widget: markdown
+        default: |
+          **做了什么**
+
+          -
+
+          **想法 / 收获**
+
+          -

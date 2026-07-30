@@ -1,0 +1,131 @@
+// Daily log timeline (/daily/)
+
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $color-border;
+  }
+}
+
+.timeline-month {
+  position: relative;
+  margin: 2.5rem 0 1.25rem;
+  font-family: $font-heading;
+  font-size: 1.3rem;
+  color: $color-text;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $color-primary;
+    border: 2px solid $color-bg;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.55rem;
+  transform: translateX(-50%);
+  margin-left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-bg;
+  border: 2px solid $color-primary;
+}
+
+.timeline-card {
+  background: $color-bg-light;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.timeline-date {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+
+  time {
+    font-weight: 600;
+    color: $color-text;
+  }
+}
+
+.timeline-weekday {
+  font-size: 0.85rem;
+  color: $color-text-muted;
+}
+
+.timeline-title {
+  font-size: 0.95rem;
+  color: $color-primary;
+}
+
+.timeline-content {
+  font-size: 0.95rem;
+  color: $color-text;
+
+  p,
+  ul,
+  ol {
+    margin: 0.4rem 0;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.25rem;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .timeline {
+    padding-left: 1.1rem;
+  }
+
+  .timeline-month::before,
+  .timeline-marker {
+    left: -1.1rem;
+  }
+
+  .timeline-card {
+    padding: 0.85rem 1rem;
+  }
+}

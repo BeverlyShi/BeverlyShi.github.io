@@ -1,0 +1,46 @@
+---
+layout: default
+title: Daily
+permalink: /daily/
+---
+<div class="blog-container">
+  <h1 class="page-title">Daily</h1>
+  <p class="blog-intro-note"><em>每天做了什么，按时间线记下来。</em></p>
+
+  {% assign entries = site.daily | sort: "date" | reverse %}
+
+  {% if entries.size == 0 %}
+    <p><em>还没有记录 —— 从今天开始吧！</em></p>
+  {% endif %}
+
+  <div class="timeline">
+    {% for entry in entries %}
+      {% assign month_key = entry.date | date: "%Y年%-m月" %}
+      {% assign prev_index = forloop.index0 | minus: 1 %}
+      {% if forloop.first %}
+        <h2 class="timeline-month">{{ month_key }}</h2>
+      {% else %}
+        {% assign prev_key = entries[prev_index].date | date: "%Y年%-m月" %}
+        {% if month_key != prev_key %}
+          <h2 class="timeline-month">{{ month_key }}</h2>
+        {% endif %}
+      {% endif %}
+
+      <div class="timeline-entry">
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">
+            <time datetime="{{ entry.date | date_to_xmlschema }}">{{ entry.date | date: "%-m月%-d日" }}</time>
+            <span class="timeline-weekday">{{ entry.date | date: "%a" | replace: "Mon", "周一" | replace: "Tue", "周二" | replace: "Wed", "周三" | replace: "Thu", "周四" | replace: "Fri", "周五" | replace: "Sat", "周六" | replace: "Sun", "周日" }}</span>
+            {% if entry.title and entry.title != "" %}
+              <span class="timeline-title">{{ entry.title }}</span>
+            {% endif %}
+          </div>
+          <div class="timeline-content">
+            {{ entry.content | markdownify }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
